@@ -410,6 +410,8 @@ jobs:
               source scripts/build/gpg-test-vars.sh
             fi
 
+            export GPG_TTY=$(tty)
+
             # Necessary for signing bundled plugins
             export GRAFANA_API_KEY=$GRAFANA_COM_API_KEY
             if [[ -n $CIRCLE_TAG ]]; then
@@ -471,6 +473,8 @@ jobs:
       - run:
           name: Package Grafana
           command: |
+            export GPG_TTY=$(tty)
+
             # Necessary for signing bundled plugins
             export GRAFANA_API_KEY=$GRAFANA_COM_API_KEY
 
